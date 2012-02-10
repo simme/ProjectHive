@@ -1,18 +1,20 @@
 {
-  "author": "",
-  "name": "projecthive",
-  "description": "some desc",
-  "version": "0.0.1",
-  "homepage": "projecthive.wordpress.com",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/simme/ProjectHive.git"
-  },
-  "engines": {
-    "node": "~0.6.6"
-  },
-  "dependencies": {
-    "express": "2.5.8"
-  },
-  "devDependencies": {}
+  , "name": "projecthive"
+  , "version": "0.0.1"
+  , "private": true
+  , "author": ""
+  , "description": "some desc"
+
+  , "repository": {
+      "type": "git",
+      "url": "git://github.com/simme/ProjectHive.git"
+    }
+  , "engines": {
+      "node": "~0.6.6"
+    }
+  , "dependencies": {
+      "express": "2.5.8"
+    , "sass": ">= 0.0.1"
+    , "jade": ">= 0.20.1"
+  }
 }
