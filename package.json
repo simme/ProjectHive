@@ -1,0 +1,18 @@
+{
+  "author": "",
+  "name": "projecthive",
+  "description": "some desc",
+  "version": "0.0.1",
+  "homepage": "projecthive.wordpress.com",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/simme/ProjectHive.git"
+  },
+  "engines": {
+    "node": "~0.6.6"
+  },
+  "dependencies": {
+    "express": "2.5.8"
+  },
+  "devDependencies": {}
+}
