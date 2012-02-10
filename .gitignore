@@ -1,0 +1,6 @@
+.rsync_cache
+.project
+.buildpath
+.DS_Store
+*.swp
+*.swo
