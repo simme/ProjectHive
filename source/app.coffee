@@ -3,6 +3,7 @@ express  = require 'express'
 sass     = require 'sass'
 fs       = require 'fs'
 md       = require 'discount'
+yaml     = require 'js-yaml'
 
 app = module.exports = express.createServer()
 
@@ -31,14 +32,30 @@ loadModel = (file) ->
 files = fs.readdirSync "#{__dirname}/models"
 loadModel file for file in files
 
+# load md file and add a route based on filename
 loadMDfiles = (file, prefix) ->
+  if file.match("swp") || file.match("gitkee")
+    return
   path = "#{prefix}/#{file}"
   fs.readFile "#{__dirname}/../#{prefix}/#{file}", 'utf8', (err,str) ->
-    html = md.parse(str)
+    split = str.split('---')
+    title = path.replace('md','')
+    if split.length > 0
+      split.shift() # remove the first
+      yamlcontent = split.shift()
+      yamlparsed = yaml.load(yamlcontent)
+      # set title
+      title = yamlparsed.title
+      # concatenate the markdown_content
+      markdown_content = ''
+      markdown_content += s for s in split
+      html = md.parse(markdown_content)
+    else
+      html = md.parse(str)
     routerPath = path.replace('.md','').replace(' ','-')
     routerPath = routerPath.replace('pages/','') if prefix == 'pages'
     app.get "/#{routerPath}", (req, res) ->
-      res.render("static", {title:"some title of this page", "html":html})
+      res.render("static", {title:"static page: #{title}", "html":html})
 
 blogPosts = fs.readdirSync "#{__dirname}/../blogposts/"
 loadMDfiles blogPost, 'blogposts' for blogPost in blogPosts

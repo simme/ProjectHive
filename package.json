@@ -22,5 +22,6 @@
     , "underscore": ""
     , "discount": ""
     , "flattrjs": ""
+    , "js-yaml": ""
   }
 }
