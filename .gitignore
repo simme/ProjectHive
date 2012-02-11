@@ -2,7 +2,10 @@
 .project
 .buildpath
 .DS_Store
+.sass-cache
 *.swp
 *.swo
+
+public/stylesheets/*.css
 
 node_modules/*
