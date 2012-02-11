@@ -1,5 +1,5 @@
-mongoose = module.parent.exports.mongoose
-User = module.parent.exports.User
+mongoose = require 'mongoose'
+User = mongoose.model 'User'
 
 # GET /users
 exports.index = (req, res) ->

@@ -1,5 +1,5 @@
-mongoose = module.parent.exports.mongoose
-Craft = new mongoose.Schema
+mongoose = require 'mongoose'
+mongoose.model 'Craft', new mongoose.Schema
   craft_type:
     type: String
   title:
@@ -11,6 +11,3 @@ Craft = new mongoose.Schema
   owned_by:
     # user:<user_id> || craft:<craft_id> .. stupid idea?
     type: String     
-
-mongoose.model 'Craft', Craft
-module.exports = mongoose.model 'Craft'

@@ -27,10 +27,10 @@ mongoose.connect 'mongodb://localhost/projecthive'
 # Automagically load models
 loadModel = (file) ->
   require "./models/#{file}"
-fs.readdir "#{__dirname}/models", (err, files) =>
-  if err then throw err
-  loadModel file for file in files
-  console.log mongoose.model 'User'
+files = fs.readdirSync "#{__dirname}/models"
+#if err then throw err
+loadModel file for file in files
+
 
 # Routes
 routes =

@@ -1,5 +1,5 @@
-mongoose = module.parent.exports.mongoose
-Craft = module.parent.exports.Craft
+mongoose = require 'mongoose'
+Craft = mongoose.model 'Craft'
 
 # GET /crafts
 exports.index = (req, res) ->
