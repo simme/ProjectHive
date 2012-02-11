@@ -2,8 +2,6 @@
 html
   head
     title= title
-    link(rel='stylesheet', media='screen, projection', href='/stylesheets/screen.css')
-    link(rel='stylesheet', media='print', href='/stylesheets/print.css')
-    //if IE
-      link(rel='stylesheet', media='print', href='/stylesheets/ie.css')
-  body!= body
+    link(rel='stylesheet', media='all', href='/stylesheets/master.css')
+  body
+    != body
