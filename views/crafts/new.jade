@@ -6,5 +6,23 @@ form(action='/crafts', method='post')
     label title
     div.controls
       input(type='text', name='title')
+
+  div.control-group
+    label url
+    div.controls
+      input(type='text', name='url')
+
+  div.control-group
+    label description
+    div.controls
+      input(type='text', name='description')
+
+  div.control-group
+    label craft type
+    div.controls
+      select(name='craft_type')
+        option(value='person') person
+        option(value='stream') streams
+
   div.actions
   input(type='submit', class='btn btn-primary')
