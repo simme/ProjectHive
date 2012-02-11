@@ -29,7 +29,6 @@ mongoose.connect 'mongodb://localhost/projecthive'
 loadModel = (file) ->
   require "./models/#{file}"
 files = fs.readdirSync "#{__dirname}/models"
-#if err then throw err
 loadModel file for file in files
 
 loadMDfiles = (file, prefix) ->
@@ -58,22 +57,27 @@ routes =
 # pages
 app.get '/', (req, res) ->
   res.render "index", title: "welcome"
+
 # callbacks
 app.get '/callbacks', routes.callbacks.index
 app.get '/callbacks/flattr', routes.callbacks.flattr
 app.get '/callbacks/justin', routes.callbacks.justin
+
 # crafts
 app.get '/crafts', routes.crafts.index
 app.get '/crafts/new', routes.crafts.new_form
 app.get "/crafts/:craft_id", routes.crafts.show
 app.post '/crafts', routes.crafts.create
+
 # session
 app.get '/session/new', routes.session.new
 app.get '/session/check', routes.session.check
+
 # users
 app.get '/users/new', routes.users.new
 app.get '/users', routes.users.index
 app.post '/users', routes.users.create
+app.get '/signup', routes.users.signup
 
 app.listen 3000
 console.log "Express server listening on port %d in %s mode", app.address().port, app.settings.env

@@ -21,3 +21,10 @@ exports.create = (req, res) ->
     user.save ->
       res.redirect '/users/?created'
 
+#
+# Signup
+#
+# Displays connect buttons to new users.
+#
+exports.signup = (req, res) ->
+  res.render 'users/signup', { title: 'Signup' }
