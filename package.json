@@ -18,5 +18,7 @@
     , "jade": ""
     , "coffee-script": ""
     , "mongoose": ""
+    , "async": ""
+    , "underscore": ""
   }
 }

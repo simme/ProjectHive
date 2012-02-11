@@ -1,6 +1,7 @@
-
+mongoose = require 'mongoose'
 express  = require 'express'
 sass     = require 'sass'
+fs       = require 'fs'
 
 app = module.exports = express.createServer()
 
@@ -20,14 +21,18 @@ app.configure 'development', () ->
 app.configure 'production', () ->
   app.use express.errorHandler()
 
-# Models
-
-mongoose = module.exports.mongoose = require 'mongoose'
+# Data store
 mongoose.connect 'mongodb://localhost/projecthive'
-User = module.exports.User = require __dirname+'/models/user'
-Craft = module.exports.Craft = require __dirname+'/models/craft'
-# Routes
 
+# Automagically load models
+loadModel = (file) ->
+  require "./models/#{file}"
+fs.readdir "#{__dirname}/models", (err, files) =>
+  if err then throw err
+  loadModel file for file in files
+  console.log mongoose.model 'User'
+
+# Routes
 routes =
   pages:require(__dirname + '/routes/pages')
   callbacks:require(__dirname + '/routes/callbacks')

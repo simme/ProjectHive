@@ -1,9 +1,7 @@
-mongoose = module.parent.exports.mongoose
-User = new mongoose.Schema
+mongoose = require 'mongoose'
+
+mongoose.model 'User', new mongoose.Schema
   name:
     type: String
     index: true
     unique: true
-
-mongoose.model 'User', User
-exports.base = mongoose.model 'User'
