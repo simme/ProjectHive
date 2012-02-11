@@ -12,13 +12,13 @@ exports.index = (req, res) ->
 
 # GET /users/new
 exports.new = (req, res) ->
-  user = new User
+  user = new User.base
   res.render 'users/new', {title: "create user", "user":user}
 
 # POST /users
 exports.create = (req, res) ->
   console.log "PARAMS: name=>"+req.param('name')
-  user = new User
+  user = new User.base
   user.name = req.param('name')
   if (user.name!= "")
     console.log("should be able to save "+user)

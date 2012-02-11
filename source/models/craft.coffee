@@ -8,4 +8,4 @@ Craft = new mongoose.Schema
     type: String
 
 mongoose.model 'Craft', Craft
-exports = mongoose.model 'Craft'
+exports.base = mongoose.model 'Craft'

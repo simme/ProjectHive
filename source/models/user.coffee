@@ -6,4 +6,4 @@ User = new mongoose.Schema
     unique: true
 
 mongoose.model 'User', User
-exports = mongoose.model 'User'
+exports.base = mongoose.model 'User'

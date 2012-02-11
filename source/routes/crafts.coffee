@@ -8,12 +8,12 @@ exports.index = (req, res) ->
 
 # GET /crafts/new
 exports.new = (req, res) ->
-  craft = new Craft
-  res.render 'crafts/new', {title: "create a new craft", "craft":craft}
+  craft = new Craft.base
+  res.render 'crafts/new', {title: "create a new craft", "craft":"foo"}
 
 # POST /crafts
 exports.create = (req, res) ->
-  craft = new Craft
+  craft = new Craft.base
 # @todo implement!
   res.render 'crafts/index', {title: "should redirect.."}
 
