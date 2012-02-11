@@ -1,5 +1,5 @@
 {
-  , "name": "projecthive"
+   "name": "projecthive"
   , "version": "0.0.1"
   , "private": true
   , "author": ""
@@ -14,7 +14,7 @@
     }
   , "dependencies": {
       "express": "2.5.8"
-    , "sass": ">= 0.0.1"
-    , "jade": ">= 0.20.1"
+    , "sass": ""
+    , "jade": ""
   }
 }

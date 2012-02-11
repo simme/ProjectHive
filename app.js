@@ -4,7 +4,7 @@
  */
 
 var express = require('express')
-  , routes = require('./routes');
+  , sass = require('sass');
 
 var app = module.exports = express.createServer();
 
@@ -29,7 +29,16 @@ app.configure('production', function(){
 
 // Routes
 
-app.get('/', routes.index);
+var routes = {
+    pages:require('./routes/pages')
+  , callbacks:require('./routes/callbacks')
+};
+
+app.get('/', routes.pages.home);
+app.get('/about', routes.pages.about);
+app.get('/callbacks', routes.callbacks.index);
+app.get('/callbacks/flattr', routes.callbacks.flattr);
+app.get('/callbacks/justin', routes.callbacks.justin);
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
