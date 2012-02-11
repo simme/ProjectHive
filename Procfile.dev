@@ -1,2 +1,3 @@
 web: nodemon app.js
 compass: compass watch --sass-dir=sass --css-dir=public/stylesheets --poll
+coffee-script: coffee --watch --compile --output lib source

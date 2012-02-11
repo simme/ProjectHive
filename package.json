@@ -16,5 +16,6 @@
       "express": "2.5.8"
     , "sass": ""
     , "jade": ""
+    , "coffee-script": ""
   }
 }

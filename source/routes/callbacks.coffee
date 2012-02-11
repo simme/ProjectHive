@@ -1,16 +1,8 @@
-/**
- *
- * GET /index
- */
-
-exports.index = function(req, res){
+exports.index = (req, res) ->
   res.render('callback', { title: 'Hello CALLBACK' })
-};
 
-exports.flattr = function(req, res){
+exports.flattr = (req, res) ->
   res.render('callback', { title: 'Hello Flattr callback' })
-};
 
-exports.justin = function(req, res){
+exports.justin = (req, res) ->
   res.render('callback', { title: 'Hello Justin callback' })
-};

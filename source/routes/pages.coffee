@@ -1,12 +1,6 @@
 
-/*
- * GET home page.
- */
-
-exports.home = function(req, res){
+exports.home = (req, res)->
   res.render('index', { title: 'Hello world' })
-};
 
-exports.about = function(req, res) {
+exports.about = (req, res) ->
   res.render('about', { title: 'About project hive' })
-};
