@@ -8,8 +8,13 @@ exports.index = (req, res) ->
 
 # GET /users/new
 exports.new = (req, res) ->
+  console.log req.session
   user = new User
-  res.render 'users/new', {title: "create user", "user":user}
+  username = req.session.user.username
+  res.render 'users/new',
+    title: "create user"
+    user: user
+    username: username
 
 # POST /users
 exports.create = (req, res) ->
@@ -27,4 +32,41 @@ exports.create = (req, res) ->
 # Displays connect buttons to new users.
 #
 exports.signup = (req, res) ->
-  res.render 'users/signup', { title: 'Signup' }
+  config = require './../../config.json'
+  {Flattr} = require 'flattrjs'
+  client = new Flattr
+    key: config.api.client_id
+    secret: config.api.secret
+    client: 'NodeHTTP'
+
+  scopes = ['flattr', 'thing', 'extendedread']
+  res.render 'users/signup',
+    title: 'Signup',
+    url: client.authenticate scopes
+
+#
+# Handle flattr callback
+#
+exports.signup_flattr = (req, res) ->
+  code = req.param('code')
+
+  config = require './../../config.json'
+  {Flattr} = require 'flattrjs'
+  client = new Flattr
+    key: config.api.client_id
+    secret: config.api.secret
+    client: 'NodeHTTP'
+
+  client.getAccessToken code, (err, data) ->
+    # todo: probably add some fancy error reportin here...
+    if err then throw err
+
+    # Store access_token in session
+    req.session.flattr =
+          access_token: data.access_token
+
+    # Load current user from flattr
+    client.options.access_token = data.access_token
+    client.currentUser (err, data) ->
+      req.session.user = data
+      res.redirect '/users/new'
