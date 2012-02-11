@@ -1,0 +1,2 @@
+web: nodemon app.js
+compass: compass watch --sass-dir=sass --css-dir=public/stylesheets --poll
