@@ -38,12 +38,12 @@ loadMDfiles = (file, prefix) ->
     routerPath = path.replace('.md','').replace(' ','-')
     routerPath = routerPath.replace('pages/','') if prefix == 'pages'
     app.get "/#{routerPath}", (req, res) ->
-      res.send(html)
+      res.render("static", {title:"some title of this page", "html":html})
 
-blogPosts = fs.readdirSync "#{__dirname}/../blogposts"
+blogPosts = fs.readdirSync "#{__dirname}/../blogposts/"
 loadMDfiles blogPost, 'blogposts' for blogPost in blogPosts
 
-pages = fs.readdirSync "#{__dirname}/../pages"
+pages = fs.readdirSync "#{__dirname}/../pages/"
 loadMDfiles f, 'pages' for f in pages
 
 
