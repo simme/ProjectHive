@@ -13,4 +13,4 @@ Craft = new mongoose.Schema
     type: String     
 
 mongoose.model 'Craft', Craft
-exports.base = mongoose.model 'Craft'
+module.exports = mongoose.model 'Craft'
