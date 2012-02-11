@@ -40,6 +40,8 @@ routes =
   session:require(__dirname+'/routes/session')
   users:require(__dirname+'/routes/users')
 
+console.log routes.crafts
+
 # pages
 app.get '/', routes.pages.home
 app.get '/about', routes.pages.about
@@ -49,7 +51,8 @@ app.get '/callbacks/flattr', routes.callbacks.flattr
 app.get '/callbacks/justin', routes.callbacks.justin
 # crafts
 app.get '/crafts', routes.crafts.index
-app.get '/crafts/new', routes.crafts.new
+app.get '/crafts/new', routes.crafts.new_form
+app.get "/crafts/:id", routes.crafts.show
 app.post '/crafts', routes.crafts.create
 # session
 app.get '/session/new', routes.session.new
