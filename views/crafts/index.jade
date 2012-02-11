@@ -1,5 +1,21 @@
 hej jag är crafts index
 
-ul
+table
+  tr
+    th title
+    th url 
+    th
+    th
   for craft in crafts
-    li #{craft.title}
+    tr
+      td #{craft.title}
+      td 
+        a(href="#{craft.url}") #{craft.url}
+      td
+        a(href="/crafts/#{craft.id}") edit
+      td
+        a(href="/crafts/#{craft.id}") delete 
+        
+
+.actions
+  a(href="/crafts/new") create new

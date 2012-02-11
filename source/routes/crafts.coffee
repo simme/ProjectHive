@@ -16,8 +16,11 @@ exports.create = (req, res) ->
   craft = new Craft
 # @todo implement!
   craft.title = req.param('title')
+  craft.description = req.param('description')
+  craft.craft_type  = req.param('description')
+  craft.url = req.param('url')
   console.log "will save craft object"+craft
   craft.save ->
-    res.redirect '/crafts?woot success'
+    res.redirect '/crafts?wootsuccess'
 
 
