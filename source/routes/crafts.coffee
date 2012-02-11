@@ -5,12 +5,12 @@ module.exports =
   # GET /crafts
   index : (req, res) ->
     Craft.find {}, (err, crafts) ->
-    res.render 'crafts/index', {title:"the crafts index", "crafts":crafts}
+      res.render 'crafts/index', {title:"the crafts index", "crafts":crafts}
 
   # GET /crafts/:id
   show : (req, res) ->
     Craft.findOne {_id: req.param('craft_id')}, (err,craft) ->
-      res.render 'crafts/show', {title:craft.title, "craft":craft}
+      res.render 'crafts/show', {title:"Craft: "+craft.title, "craft":craft}
 
   # GET /crafts/new
   new_form : (req, res) ->
@@ -24,7 +24,6 @@ module.exports =
     craft.description = req.param('description')
     craft.craft_type  = req.param('description')
     craft.url = req.param('url')
-    console.log "will save craft object"+craft
     craft.save ->
       res.redirect '/crafts?wootsuccess'
 
