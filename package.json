@@ -17,5 +17,6 @@
     , "sass": ""
     , "jade": ""
     , "coffee-script": ""
+    , "mongoose": ""
   }
 }
