@@ -8,14 +8,20 @@ yaml     = require 'js-yaml'
 app = module.exports = express.createServer()
 
 # Configuration
-
 app.configure ->
+  app.use express.cookieParser()
+  app.use express.session
+    secret: "foo bar baz"
+    cookie:
+      path: '/'
   app.set 'views', __dirname + '/../views'
   app.set 'view engine', 'jade'
   app.use express.bodyParser()
   app.use express.methodOverride()
   app.use app.router
   app.use express.static(__dirname + '/../public')
+  return
+
 
 app.configure 'development', () ->
   app.use express.errorHandler({ dumpExceptions: true, showStack: true })
@@ -95,6 +101,7 @@ app.get '/users/new', routes.users.new
 app.get '/users', routes.users.index
 app.post '/users', routes.users.create
 app.get '/signup', routes.users.signup
+app.get '/signup/flattr', routes.users.signup_flattr
 
 app.listen 3000
 console.log "Express server listening on port %d in %s mode", app.address().port, app.settings.env
