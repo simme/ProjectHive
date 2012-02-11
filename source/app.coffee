@@ -25,6 +25,7 @@ app.configure 'production', () ->
 mongoose = module.exports.mongoose = require 'mongoose'
 mongoose.connect 'mongodb://localhost/projecthive'
 User = module.exports.User = require __dirname+'/models/user'
+Craft = module.exports.Craft = require __dirname+'/models/craft'
 # Routes
 
 routes =
@@ -32,15 +33,26 @@ routes =
   callbacks:require(__dirname + '/routes/callbacks')
   crafts:require(__dirname+'/routes/crafts')
   session:require(__dirname+'/routes/session')
+  users:require(__dirname+'/routes/users')
 
+# pages
 app.get '/', routes.pages.home
 app.get '/about', routes.pages.about
+# callbacks
 app.get '/callbacks', routes.callbacks.index
 app.get '/callbacks/flattr', routes.callbacks.flattr
 app.get '/callbacks/justin', routes.callbacks.justin
+# crafts
 app.get '/crafts', routes.crafts.index
+app.get '/crafts/new', routes.crafts.new
+app.post '/crafts', routes.crafts.create
+# session
 app.get '/session/new', routes.session.new
 app.get '/session/check', routes.session.check
+# users
+app.get '/users/new', routes.users.new
+app.get '/users', routes.users.index
+app.post '/users', routes.users.create
 
 app.listen 3000
 console.log "Express server listening on port %d in %s mode", app.address().port, app.settings.env

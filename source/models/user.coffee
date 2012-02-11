@@ -1,5 +1,9 @@
 mongoose = module.parent.exports.mongoose
 User = new mongoose.Schema
-  name: String
+  name:
+    type: String
+    index: true
+    unique: true
+
 mongoose.model 'User', User
-exports.base = mongoose.model 'User'
+exports = mongoose.model 'User'
