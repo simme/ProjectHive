@@ -17,7 +17,7 @@ form(action='/users', method='post')
     .control-group
       label flattr username
       .controls
-        input(type='text', name='name', value=user.flattr.username)
+        input(type='text', name='flattr[username]', value=user.flattr.username)
 
   .actions
     input(type='submit')

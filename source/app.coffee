@@ -96,6 +96,7 @@ app.get '/users', routes.users.index
 app.post '/users', routes.users.create
 app.get '/signup', routes.users.signup
 app.get '/signup/flattr', routes.users.signup_flattr
+app.get '/flattrusers/:username', routes.users.show_flattruser
 
 app.listen 3000
 console.log "Express server listening on port %d in %s mode", app.address().port, app.settings.env
