@@ -1,6 +1,9 @@
 mongoose = require 'mongoose'
 mongoose.model 'Craft', new mongoose.Schema
   craft_type:
+    # different types
+    # organisation | player | caster | lurker | team
+    # stream | vod | event | show | blog | strat_guide | fan_art | other
     type: String
   title:
     type: String
