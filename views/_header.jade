@@ -1,26 +1,32 @@
 nav
-  h1
-    a(href="/") ProjectHive
+  div(class="main-navigation")
+    h1
+      a(href="/") ProjectHive
 
-  ul(class='main-navigation')
-    li
-      a(href='/catalog') Catalog
-      ul
-        li
-          a(href='/catalog/vods') VODs
-        li
-          a(href='/catalog/players') Players
-    li
-      a(href='/news') News
-    li
-      a(href='/about') About
+    ul
+      li
+        a(href='/catalog') Catalog
+        ul
+          li
+            a(href='/catalog/vods') VODs
+          li
+            a(href='/catalog/players') Players
+      li
+        a(href='/news') News
+      li
+        a(href='/about') About
 
-  form(class="search-form", action="/search", method="get")
-    label(for="query") Search
-    input(name="query", id="query")
+    form(class="search-form", action="/search", method="get")
+      label(for="query") Search for awesome content
+      input(name="query", id="query", type="search")
+      input(type="submit", value="Go")
 
-  ul(class='userlinks')
-    li
-      a(href='/signup') Signup
-    li
-      a(href='/login') Log in
+    ul(class='userlinks')
+      li
+        a(href='/signup') Signup
+      li
+        a(href='/login') Log in
+
+    form(class="loginform")
+      p hejhej
+      p hojhoj

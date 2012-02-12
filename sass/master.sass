@@ -1,6 +1,148 @@
 @import "compass"
 @import "normalize"
+@import "animations"
+
+$maxwidth: 1200
+$accentcolor: #3c9bff
+
+$navheight: 28px
 
 body
-  background: #333
+  padding-top: $navheight*1.5
+  color: #fff
+  background: #101014
 
+// Page header
+nav
+  background: #888
+  border-bottom: 1px solid #000
+  margin: auto
+  overflow: visible
+  height: $navheight
+  padding: 5px 2%
+  position: fixed
+  top: 0
+  left: 0
+  width: 96%
+  @include single-box-shadow(rgba($accentcolor, .3), 0, -4px, 20px, 10px)
+  @include linear-gradient(darken($accentcolor, 30%), $accentcolor)
+
+  ul, form, h1
+    display: block
+    float: left
+    margin: 0
+    padding: 0
+    height: $navheight
+    line-height: $navheight
+
+  h1
+    margin-right: percentage(40/$maxwidth)
+
+    a
+      color: #000
+      text-decoration: none
+      font-size: 16px
+
+  ul
+    position: relative
+
+    li
+      display: block
+      float: left
+      margin: 0 0 0 10px
+
+    a
+      text-decoration: none
+      color: #000
+
+    ul
+      display: none
+
+      li
+        background: #fff
+        float: none
+
+    li:hover, li:focus
+      ul
+        display: block
+        position: absolute
+        top: $navheight
+
+  label
+    display: none
+
+  form
+    padding: 0 20px
+
+.main-navigation
+  background: #000
+  margin: auto
+  max-width: #{$maxwidth}px
+  position: relative
+  width: 100%
+
+.userlinks
+  float: right
+
+.loginform
+  display: none
+  position: absolute
+  right: 0
+  top: 30px
+  background: #000
+
+// Content 'n stuff
+.wrap
+  max-width: #{$maxwidth - 20}px
+  width: 100%
+  margin: 20px auto
+  padding: 10px
+  overflow: hidden
+
+.column
+  width: 30%
+  padding: 0 2.5%
+  float: left
+  box-sizing: border-box
+
+  &:first-child
+    padding-left: 0
+
+  &:last-child
+    padding-right: 0
+
+  h1
+    border-bottom: 1px solid #fff
+
+ul
+  padding: 0
+  margin: 0
+
+.sidebar
+  border-left: 1px solid #fff
+
+.craft-item
+  clear: both
+  overflow: hidden
+  margin-bottom: 10px
+  list-style: none
+  margin: 0
+  padding: 0
+  
+  img
+    display: block
+    max-width: 30%
+    margin-right: 5%
+    float: left
+  
+  h1
+    border-bottom: none
+    font-size: 14px
+
+// Footer
+body > footer
+  background: #555
+  max-width: #{$maxwidth}px
+  width: 100%
+  margin: auto
+  overflow: hidden

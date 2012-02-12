@@ -72,13 +72,13 @@ loadMDfiles f, 'pages' for f in pages
 
 # Routes
 routes =
+  index:require(__dirname + '/routes/index')
   crafts:require(__dirname+'/routes/crafts')
   session:require(__dirname+'/routes/session')
   users:require(__dirname+'/routes/users')
 
-# start page
-app.get '/', (req, res) ->
-  res.render "index", title: "welcome"
+# pages
+app.get '/', routes.index.index
 
 # crafts
 app.get '/crafts', routes.crafts.index
