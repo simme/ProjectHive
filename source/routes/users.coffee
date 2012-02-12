@@ -7,6 +7,18 @@ exports.index = (req, res) ->
   User.find {}, (err, users) ->
     res.render 'users/index', {title:"the users index", "users":users}
 
+
+# GET /users/show_self
+# will only happen if ensureAuthenticated is ok
+exports.show_self = (req, res) ->
+  User.findOne {_id:req.session.user_id}, (err, user) ->
+    if user
+      res.render 'users/show',
+        title: "your authentication"
+        user: user
+    else
+      res.redirect '/?wtflolnouser?'
+
 # GET /flattrusers/:username
 # this is just an internal debugging method
 exports.show_flattruser = (req, res) ->
@@ -90,7 +102,8 @@ exports.signup_flattr = (req, res) ->
     # Load current user from flattr
     client.options.access_token = data.access_token
     client.currentUser (err, data) ->
-      if data
+      if data && data.username
+        req.flash "notice", "SUCCESS getting flattr username"
         # are the flattr user already in our db?
         User.findOne {flattr:{username:data.username}}, (err, user) ->
           # if it is, the session is considered authenticated
@@ -102,4 +115,5 @@ exports.signup_flattr = (req, res) ->
             req.session.new_user = data
             res.redirect '/users/new?create_new_please'
       else
+        req.flash "error", "unable to get flattr username from access token"
         res.redirect '/users/signup?failed to fetch flattr user'

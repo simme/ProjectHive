@@ -4,6 +4,7 @@ sass     = require 'sass'
 fs       = require 'fs'
 md       = require 'discount'
 yaml     = require 'js-yaml'
+util     = require 'util'
 
 app = module.exports = express.createServer()
 
@@ -77,7 +78,9 @@ routes =
   session:require(__dirname+'/routes/session')
   users:require(__dirname+'/routes/users')
 
-# pages
+route_helpers = require "#{__dirname}/route_helpers"
+
+# start page
 app.get '/', routes.index.index
 
 # crafts
@@ -94,6 +97,9 @@ app.get '/session/check', routes.session.check
 app.get '/users/new', routes.users.new
 app.get '/users', routes.users.index
 app.post '/users', routes.users.create
+app.get '/users/show_self', route_helpers.ensureAuthenticated, routes.users.show_self
+
+
 app.get '/signup', routes.users.signup
 app.get '/signup/flattr', routes.users.signup_flattr
 app.get '/flattrusers/:username', routes.users.show_flattruser
