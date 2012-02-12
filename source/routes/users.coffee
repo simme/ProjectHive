@@ -57,8 +57,8 @@ exports.signup = (req, res) ->
   config = require './../../config.json'
   {Flattr} = require 'flattrjs'
   client = new Flattr
-    key: config.api.client_id
-    secret: config.api.secret
+    key: config.api.flattr.client_id
+    secret: config.api.flattr.secret
     client: 'NodeHTTP'
 
   scopes = ['flattr', 'thing', 'extendedread']
@@ -75,8 +75,8 @@ exports.signup_flattr = (req, res) ->
   config = require './../../config.json'
   {Flattr} = require 'flattrjs'
   client = new Flattr
-    key: config.api.client_id
-    secret: config.api.secret
+    key: config.api.flattr.client_id
+    secret: config.api.flattr.secret
     client: 'NodeHTTP'
 
   client.getAccessToken code, (err, data) ->
