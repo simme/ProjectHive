@@ -72,19 +72,13 @@ loadMDfiles f, 'pages' for f in pages
 
 # Routes
 routes =
-  callbacks:require(__dirname + '/routes/callbacks')
   crafts:require(__dirname+'/routes/crafts')
   session:require(__dirname+'/routes/session')
   users:require(__dirname+'/routes/users')
 
-# pages
+# start page
 app.get '/', (req, res) ->
   res.render "index", title: "welcome"
-
-# callbacks
-app.get '/callbacks', routes.callbacks.index
-app.get '/callbacks/flattr', routes.callbacks.flattr
-app.get '/callbacks/justin', routes.callbacks.justin
 
 # crafts
 app.get '/crafts', routes.crafts.index
