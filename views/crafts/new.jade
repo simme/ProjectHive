@@ -1,6 +1,10 @@
 
 h1 create a craft
 
+if typeof errors != 'undefined'
+  .errors
+    #{errors}
+
 form(action='/crafts', method='post')
   div.control-group
     label title
@@ -24,5 +28,5 @@ form(action='/crafts', method='post')
         option(value='person') person
         option(value='stream') streams
 
-  div.actions
-  input(type='submit', class='btn btn-primary')
+  .actions
+    input(type='submit', class='btn btn-primary')

@@ -19,12 +19,14 @@ module.exports =
 
   # POST /crafts
   create : (req, res) ->
-    craft = new Craft
-    craft.title = req.param('title')
-    craft.description = req.param('description')
-    craft.craft_type  = req.param('description')
-    craft.url = req.param('url')
-    craft.save ->
-      res.redirect '/crafts?wootsuccess'
+    craft = new Craft( req.body )
+    craft.save (err) ->
+      if err
+        res.render 'crafts/new',
+          title: "create a new craft | errors"
+          errors: err
+          craft: craft
+      else
+        res.redirect '/crafts?wootsuccess'
 
 

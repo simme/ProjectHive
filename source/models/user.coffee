@@ -9,7 +9,11 @@ mongoose.model 'User', new mongoose.Schema
     type: String
     index: true
     unique: true
-  flattr_token:
-    type: String
-  justin_token:
-    type: String
+  flattr:
+    token:
+      type: String
+    username:
+      type: String
+  justin:
+    token:
+      type: String

@@ -10,21 +10,26 @@ exports.index = (req, res) ->
 exports.new = (req, res) ->
   console.log req.session
   user = new User
-  username = req.session.user.username
+  if req.session.user
+    user.name = req.session.user.username
+    user.flattr.username = user.name
   res.render 'users/new',
     title: "create user"
     user: user
-    username: username
 
 # POST /users
 exports.create = (req, res) ->
-  console.log "PARAMS: name=>"+req.param('name')
-  user = new User
-  user.name = req.param('name')
-  if (user.name!= "")
-    console.log("should be able to save "+user)
-    user.save ->
-      res.redirect '/users/?created'
+  #user = new User(req.body)
+  user = new User(req.body)
+  user.save (err) ->
+    if err
+      res.render 'users/new',
+        title:  "crete user | validation errors"
+        errors: err
+        user:   user
+    else
+      res.redirect '/users/?created=TRUE'
+###
 
 #
 # Signup

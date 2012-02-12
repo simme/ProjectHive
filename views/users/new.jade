@@ -1,5 +1,23 @@
-h1 select a username
+h1 select a username/email
+
+if typeof errors != 'undefined'
+  .errors
+    #{errors}
 
 form(action='/users', method='post')
-  input(type='text', name='name', value=username)
-  input(type='submit')
+  .control-group
+    label name
+    .controls
+      input(type='text', name='name', value=user.name)
+  .control-group
+    label email
+    .controls
+      input(type='text', name='email', value=user.email)
+  if user.flattr.username != ""
+    .control-group
+      label flattr username
+      .controls
+        input(type='text', name='name', value=user.flattr.username)
+
+  .actions
+    input(type='submit')
